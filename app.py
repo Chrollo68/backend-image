@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
-import openai # type: ignore
+from flask_cors import CORS
+import openai
 import os
 
 app = Flask(__name__)
+CORS(app)  # enable CORS for all routes
 
 # Set API key from Render environment
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -19,7 +21,7 @@ def generate_image():
         response = openai.images.generate(
             model="gpt-image-1",
             prompt=prompt,
-            size="512x512"  # can be 256x256, 512x512, 1024x1024
+            size="512x512"
         )
         image_url = response.data[0].url
         return jsonify({"url": image_url})
