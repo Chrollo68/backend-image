@@ -22,7 +22,7 @@ def generate_image():
 
     try:
         response = openai.Image.create(
-            model="dall-e-3",
+            model="gpt-image-1",
             prompt=prompt,
             size=size
         )
@@ -35,3 +35,4 @@ def generate_image():
 @app.route("/")
 def home():
     return "OpenAI Text-to-Image API Backend is running 🚀"
+
