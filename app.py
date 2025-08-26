@@ -21,7 +21,7 @@ def generate_image():
         size = "1024x1024"
 
     try:
-        response = openai.Image.create(
+        response = openai.images.generate(
             model="gpt-image-1",
             prompt=prompt,
             size=size
@@ -35,4 +35,8 @@ def generate_image():
 @app.route("/")
 def home():
     return "OpenAI Text-to-Image API Backend is running 🚀"
+
+
+
+
 
